@@ -135,7 +135,17 @@ ul{list-style:none}
 .stat-l{font-size:11px;color:var(--muted);letter-spacing:.4px;margin-top:3px}
 .pcard{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden}
 .pcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
-.pphoto{width:100%;height:320px;border-radius:10px;object-fit:cover;object-position:center top;border:1px solid var(--border);margin-bottom:18px;display:block}
+.
+.pphoto {
+  width: 100%;
+  height: 320px;              /* slightly taller */
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center 35%; /* 👈 moves image UP to reveal face */
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+  display: block;
+}
 .pdot{
   display:inline-block;width:8px;height:8px;border-radius:50%;
   background:#22c55e;margin-right:8px;animation:pulse 2s infinite;
@@ -403,7 +413,7 @@ footer{padding:36px 6%;border-top:1px solid var(--border)}
     <div>
       <div class="eyebrow rv"><span>Support Engineer · WiseTech Global</span></div>
       <h1 class="hero-h1 rv d1">
-        TROUBLE<br>SHOOTING<br><em>MISSION-</em><br><em>CRITICAL</em><br>BOTTLENECKS
+        RESOLVING<br>PRODUCTION<br><em>INCIDENTS <!--</em><br><em>CRITICAL</em><br>BOTTLENECKS/ -->
       </h1>
       <p class="hero-desc rv d2">
         I'm <strong>Venkatesh Thota</strong> — a Support Engineer specialising in planning application support, SQL analytics, automation pipelines and high-severity incident management at enterprise scale.
@@ -415,7 +425,7 @@ footer{padding:36px 6%;border-top:1px solid var(--border)}
       <div class="hero-stats rv d4">
         <div><div class="stat-n">500+</div><div class="stat-l">Incidents Resolved</div></div>
         <div><div class="stat-n">99%</div><div class="stat-l">SLA Adherence</div></div>
-        <div><div class="stat-n">2+</div><div class="stat-l">Yrs Enterprise Exp.</div></div>
+        <div><div class="stat-n">3+</div><div class="stat-l">Yrs Enterprise Exp.</div></div>
       </div>
     </div>
     <div class="rv d2">
