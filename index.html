@@ -4,43 +4,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Venkatesh Thota — Support Engineer</title>
-
-<meta name="description" content="Venkatesh Thota – Support Engineer specialising in enterprise application support, automation, SQL analytics and mission‑critical incident management.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===== ROOT ===== */
 :root{
- --bg:#050709;--bg2:#090c14;--surf:#0f1520;--surf2:#141c2e;
- --cyan:#00e5ff;--cyan2:#00b8cc;
- --cyan-gl:rgba(0,229,255,.16);--cyan-dm:rgba(0,229,255,.06);
- --text:#dde4f0;--muted:#5a6a85;
- --border:rgba(0,229,255,.10);--bord2:rgba(0,229,255,.22);
- --head:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
- --ease:cubic-bezier(.22,1,.36,1);
+  --bg:#050709;--bg2:#090c14;--surf:#0f1520;--surf2:#141c2e;
+  --cyan:#00e5ff;--cyan2:#00b8cc;
+  --cyan-gl:rgba(0,229,255,.16);--cyan-dm:rgba(0,229,255,.06);
+  --text:#dde4f0;--muted:#5a6a85;
+  --border:rgba(0,229,255,.10);--bord2:rgba(0,229,255,.22);
+  --head:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;overflow-x:hidden}
-img,video{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-
-/* ===== HERO PROFILE IMAGE FIX ===== */
-.pphoto{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  object-position:center top;
-  border-radius:10px;
-  border:1px solid var(--border);
-  margin-bottom:18px;
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;line-height:1.65}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.45;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
 }
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:3px}
 
-/* ===== PROJECT CARD UPGRADE ===== */
+/* NAVBAR */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 6%;
+  background:rgba(5,7,9,.78);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);transition:padding .3s var(--ease);
+}
+#navbar.scrolled{padding:11px 6%}
+.nav-logo{font-family:var(--head);font-size:22px;letter-spacing:3px;color:var(--cyan)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{
+  font-size:11.5px;font-weight:500;letter-spacing:.8px;
+  color:var(--muted);text-transform:uppercase;transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:.2s;
+}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{
+  padding:8px 20px!important;border-radius:5px;
+  background:var(--cyan)!important;color:var(--bg)!important;font-weight:700!important;
+}
+.nav-cta:hover{background:#fff!important}
+.nav-cta::after{display:none!important}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.ham span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mob-menu{
+  display:none;position:fixed;inset:0;z-index:490;
+  background:rgba(5,7,9,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+#mob-menu.open{display:flex}
+#mob-menu a{font-family:var(--head);font-size:34px;letter-spacing:3px;color:var(--text);transition:color .2s}
+#mob-menu a:hover{color:var(--cyan)}
+
+/* UTIL */
+.sec{padding:108px 6%;max-width:1180px;margin:0 auto}
+.lbl{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.h2{font-family:var(--head);font-size:clamp(34px,5vw,58px);letter-spacing:2px;line-height:.96;margin-bottom:12px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:56px;max-width:500px}
+.cyan{color:var(--cyan)}
+.tag{
+  display:inline-block;padding:3px 11px;border-radius:4px;
+  font-size:10.5px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;
+  font-family:var(--mono);border:1px solid var(--border);
+  color:var(--cyan);background:var(--cyan-dm);
+}
+.divider{max-width:1180px;margin:0 auto;height:1px;background:var(--border)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* HERO */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:120px 6% 80px;position:relative;overflow:hidden;
+}
+#hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 80% 70% at 55% 0%,black 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 55% 0%,black 30%,transparent 100%);
+}
+#hero::after{
+  content:"";position:absolute;top:-8%;left:58%;
+  width:550px;height:550px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,255,.10),transparent 68%);pointer-events:none;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 400px;gap:72px;align-items:center;
+  max-width:1180px;width:100%;margin:0 auto;
+}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";display:block;width:38px;height:1px;background:var(--cyan)}
+.eyebrow span{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase}
+.hero-h1{font-family:var(--head);font-size:clamp(46px,6.5vw,86px);line-height:.93;letter-spacing:2px;margin-bottom:22px}
+.hero-h1 em{font-style:normal;color:var(--cyan)}
+.hero-desc{font-size:15px;line-height:1.85;color:var(--muted);max-width:470px;margin-bottom:40px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{
+  padding:13px 30px;border-radius:6px;background:var(--cyan);color:var(--bg);
+  font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--mono);
+  transition:.22s var(--ease);box-shadow:0 0 22px rgba(0,229,255,.28);
+}
+.btn-p:hover{background:#fff;box-shadow:0 0 32px rgba(0,229,255,.5);transform:translateY(-2px)}
+.btn-o{
+  padding:12px 30px;border-radius:6px;border:1px solid var(--bord2);color:var(--text);
+  font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-family:var(--mono);
+  transition:.22s var(--ease);
+}
+.btn-o:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:44px;padding-top:36px;border-top:1px solid var(--border)}
+.stat-n{font-family:var(--head);font-size:42px;color:var(--cyan);line-height:1}
+.stat-l{font-size:11px;color:var(--muted);letter-spacing:.4px;margin-top:3px}
+.pcard{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.pcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.pphoto{width:100%;height:320px;border-radius:10px;object-fit:cover;object-position:center top;border:1px solid var(--border);margin-bottom:18px;display:block}
+.pdot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#22c55e;margin-right:8px;animation:pulse 2s infinite;
+  box-shadow:0 0 8px rgba(34,197,94,.8);
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(34,197,94,.8)}50%{box-shadow:0 0 16px rgba(34,197,94,.8)}}
+.pstatus{font-size:12px;color:#22c55e;font-family:var(--mono)}
+.pname{font-family:var(--head);font-size:20px;letter-spacing:1px;margin-top:14px}
+.prole{font-size:12px;color:var(--muted);margin-top:3px}
+.ppills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.pill{padding:3px 9px;border-radius:20px;font-size:10px;font-family:var(--mono);background:var(--cyan-dm);color:var(--cyan);border:1px solid rgba(0,229,255,.18)}
+
+/* MARQUEE */
+#techbar{padding:22px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden}
+.mtrack{display:flex;gap:52px;animation:mq 32s linear infinite;width:max-content}
+.mtrack:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mitem{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.8px;white-space:nowrap;transition:color .2s}
+.mitem:hover{color:var(--cyan)}
+.mi{font-size:16px}
+
+/* EXPERIENCE TIMELINE */
+#experience{padding:108px 6%}
+.tl{position:relative;max-width:1180px;margin:0 auto}
+.tl-line{position:absolute;left:205px;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-row{display:grid;grid-template-columns:185px 1fr;gap:56px;margin-bottom:54px;position:relative}
+.tl-row:last-child{margin-bottom:0}
+.tl-date{text-align:right;padding-top:4px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.8px;line-height:1.9}
+.tl-dot{position:absolute;left:199px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 12px var(--cyan-gl);z-index:1}
+.tl-box{
+  background:var(--surf);border:1px solid var(--border);
+  border-radius:12px;padding:26px 30px;
+  transition:.3s var(--ease);position:relative;overflow:hidden;
+}
+.tl-box::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),transparent);border-radius:3px 0 0 3px}
+.tl-box:hover{border-color:var(--bord2);transform:translateX(5px);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.tl-co{font-family:var(--head);font-size:22px;letter-spacing:1px;margin-bottom:4px}
+.tl-role{color:var(--cyan);font-size:12px;font-family:var(--mono);margin-bottom:16px}
+.tl-ul{display:flex;flex-direction:column;gap:8px}
+.tl-ul li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;line-height:1.65}
+.tl-ul li::before{content:"→";position:absolute;left:0;color:var(--cyan);font-size:11px;top:2px}
+.edu-img{width:100%;height:175px;border-radius:8px;object-fit:cover;object-position:center;border:1px solid var(--border);margin-top:16px}
+
+/* TECH STACK */
+#techstack{padding:108px 6%}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px;max-width:1180px;margin:0 auto}
+.tc{
+  background:var(--surf);border:1px solid var(--border);
+  border-radius:10px;padding:18px;
+  display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;
+  transition:.22s var(--ease);cursor:default;
+}
+.tc:hover{border-color:var(--cyan);background:var(--surf2);box-shadow:0 0 22px var(--cyan-gl);transform:translateY(-4px)}
+.ti{font-size:30px;line-height:1}
+.tn{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.4px}
+.tcat{font-size:10px;color:var(--muted)}
+
+/* PROJECTS */
+#projects{padding:108px 6%}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;max-width:1180px;margin:0 auto}
+/* Change 5 — Premium .pc hover with depth + scale */
 .pc{
   background:var(--surf);
   border:1px solid var(--border);
@@ -49,180 +205,657 @@ a{text-decoration:none;color:inherit}
   display:flex;
   flex-direction:column;
   position:relative;
-  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s ease;
+  transition:transform 0.45s cubic-bezier(.22,1,.36,1),
+             box-shadow 0.45s cubic-bezier(.22,1,.36,1),
+             border-color 0.3s ease;
 }
 .pc:hover{
   border-color:var(--cyan);
+  box-shadow:0 24px 64px rgba(0,0,0,.65), 0 0 40px rgba(0,229,255,.13);
   transform:translateY(-10px) scale(1.02);
-  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(0,229,255,.12);
 }
-
-/* Glow */
+/* Change 6 — Radial glow ::before following cursor --x/--y */
 .pc::before{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(0,229,255,.14),transparent 40%);
+  background:radial-gradient(
+    420px circle at var(--x,50%) var(--y,50%),
+    rgba(0,229,255,.14),
+    transparent 40%
+  );
   opacity:0;
-  transition:.3s;
+  transition:opacity 0.3s ease;
   pointer-events:none;
+  z-index:0;
 }
 .pc:hover::before{opacity:1}
-
-.pbanner{height:190px;overflow:hidden;position:relative}
+.pbanner{height:190px;position:relative;overflow:hidden}
+/* Change 7 — Banner img AND video: smooth scale on hover */
 .pbanner img,
 .pbanner video{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:transform .6s var(--ease);
+  object-position:center;
+  display:block;
+  transition:transform 0.6s cubic-bezier(.22,1,.36,1);
 }
 .pc:hover .pbanner img,
 .pc:hover .pbanner video{transform:scale(1.08)}
-
-.ph{transition:transform .3s ease,color .3s ease}
+.pbanner::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,var(--surf));z-index:1;pointer-events:none}
+.pbody{padding:22px;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+/* Change 7b — Tag lift on hover */
+.ptags .tag{transition:transform 0.3s ease,background 0.3s ease}
+.pc:hover .tag{transform:translateY(-2px);background:rgba(0,229,255,.15)}
+/* Change 7c — Title shifts up and turns cyan on hover */
+.ph{
+  font-family:var(--head);font-size:19px;letter-spacing:1px;margin-bottom:9px;
+  transition:transform 0.3s ease,color 0.3s ease;
+}
 .pc:hover .ph{transform:translateY(-3px);color:var(--cyan)}
+.pdesc{font-size:13px;color:var(--muted);line-height:1.72;flex:1}
+.pfooter{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+.plink{font-family:var(--mono);font-size:11px;color:var(--cyan);transition:.2s}
+.plink:hover{letter-spacing:1.2px}
 
-/* ===== KEEP ORIGINAL RESPONSIVE ===== */
+/* ACHIEVEMENTS */
+#achievements{padding:108px 6%}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;max-width:1180px;margin:0 auto}
+.acard{background:var(--surf);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.25s var(--ease)}
+.acard:hover{border-color:var(--bord2);transform:translateY(-5px);box-shadow:0 14px 38px rgba(0,0,0,.4)}
+.aimg{width:100%;height:188px;object-fit:cover;object-position:center top;display:block;border-bottom:1px solid var(--border);transition:.4s var(--ease)}
+.acard:hover .aimg{transform:scale(1.03)}
+.abody{padding:20px}
+.atitle{font-family:var(--head);font-size:17px;letter-spacing:.8px;margin-bottom:6px}
+.adesc{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* CERTIFICATIONS */
+#certifications{padding:108px 6%}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:1180px;margin:0 auto}
+.certc{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:.22s var(--ease)}
+.certc:hover{border-color:var(--bord2);transform:translateX(4px)}
+.cico{width:40px;height:40px;border-radius:8px;background:var(--cyan-dm);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.cn{font-weight:600;font-size:13px;margin-bottom:2px}
+.ci{font-size:11px;color:var(--cyan);font-family:var(--mono)}
+
+/* BLOG */
+#blog{padding:108px 6%}
+.blog-wrap{max-width:1180px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
+.bcard{background:var(--surf);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.25s var(--ease);display:flex;flex-direction:column}
+.bcard:hover{border-color:var(--bord2);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.bcard-top{padding:24px 24px 0}
+.bdate{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.8px;margin-bottom:10px}
+.btitle{font-family:var(--head);font-size:20px;letter-spacing:1px;margin-bottom:10px;transition:color .2s}
+.bcard:hover .btitle{color:var(--cyan)}
+.bexcerpt{font-size:13px;color:var(--muted);line-height:1.75;padding:0 24px}
+.bfooter{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-top:1px solid var(--border);margin-top:20px}
+.bread{font-family:var(--mono);font-size:11px;color:var(--cyan);transition:.2s}
+.bcard:hover .bread{letter-spacing:1px}
+.blog-cta-row{margin-top:34px;text-align:center}
+.blog-cta-row a{
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  border:1px solid var(--border);padding:10px 24px;border-radius:6px;
+  letter-spacing:.8px;text-transform:uppercase;transition:.2s;display:inline-block;
+}
+.blog-cta-row a:hover{color:var(--cyan);border-color:var(--bord2)}
+
+/* INTERESTS */
+#interests{padding:108px 6%}
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;max-width:1180px;margin:0 auto}
+.icard{background:var(--surf);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.25s var(--ease)}
+.icard:hover{border-color:var(--bord2);transform:translateY(-5px);box-shadow:0 14px 38px rgba(0,0,0,.4)}
+.iimg{width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-bottom:1px solid var(--border);transition:.4s var(--ease)}
+.icard:hover .iimg{transform:scale(1.04)}
+.iimg-placeholder{width:100%;height:180px;display:flex;align-items:center;justify-content:center;font-size:54px;border-bottom:1px solid var(--border)}
+.ibody{padding:22px;position:relative}
+.inum{font-family:var(--head);font-size:52px;color:rgba(0,229,255,.07);position:absolute;top:8px;right:16px;line-height:1;pointer-events:none}
+.iicon{font-size:26px;margin-bottom:11px}
+.ititle{font-family:var(--head);font-size:20px;letter-spacing:1px;margin-bottom:8px}
+.idesc{font-size:13px;color:var(--muted);line-height:1.72}
+
+/* CONTACT */
+#contact{padding:108px 6%}
+.contact-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.big-t{font-family:var(--head);font-size:clamp(44px,5.5vw,76px);line-height:.94;letter-spacing:2px;margin-bottom:24px}
+.big-t em{font-style:normal;color:var(--cyan)}
+.clinks{display:flex;flex-direction:column;gap:12px}
+.clink{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:10px;border:1px solid var(--border);background:var(--surf);transition:.22s var(--ease)}
+.clink:hover{border-color:var(--bord2);transform:translateX(5px);background:var(--surf2)}
+.clico{width:38px;height:38px;border-radius:8px;background:var(--cyan-dm);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.cllbl{font-size:10px;color:var(--muted);font-family:var(--mono);margin-bottom:1px}
+.clval{font-size:13px;font-weight:500;color:var(--text)}
+.cform{display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.5px;text-transform:uppercase}
+.fi,.ft{background:var(--surf);border:1px solid var(--border);border-radius:7px;padding:12px 15px;color:var(--text);font-family:var(--body);font-size:13px;outline:none;transition:.2s;resize:none}
+.fi:focus,.ft:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dm)}
+.ft{min-height:130px}
+.fsub{
+  align-self:flex-start;cursor:pointer;border:none;padding:13px 28px;border-radius:6px;
+  background:var(--cyan);color:var(--bg);font-weight:700;font-size:12px;letter-spacing:1.5px;
+  text-transform:uppercase;font-family:var(--mono);transition:.22s var(--ease);box-shadow:0 0 20px rgba(0,229,255,.25);
+}
+.fsub:hover{background:#fff;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{padding:36px 6%;border-top:1px solid var(--border)}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-copy{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.foot-copy span{color:var(--cyan)}
+.fsoc{display:flex;gap:22px}
+.fsoc a{font-family:var(--mono);font-size:11px;color:var(--muted);transition:.2s;letter-spacing:.4px}
+.fsoc a:hover{color:var(--cyan)}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .nav-links{display:none}.ham{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:46px;text-align:center}
+  .pcard{max-width:380px;margin:0 auto}
+  .eyebrow{justify-content:center}
+  .btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  .tl-line,.tl-dot{display:none}
+  .tl-row{grid-template-columns:1fr;gap:10px}
+  .tl-date{text-align:left;font-size:10px}
+  .contact-grid{grid-template-columns:1fr;gap:46px}
+  .sec,#experience,#techstack,#projects,#achievements,
+  #certifications,#blog,#interests,#contact{padding:76px 6%}
+}
+@media(max-width:560px){
+  .hero-h1{font-size:44px}.hero-stats{gap:20px}
+  .tg{grid-template-columns:repeat(2,1fr)}
+  .pg,.ag,.ig,.blog-grid,.cg{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
 
-<!-- ================= HERO ================= -->
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">VT.</div>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#techstack">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Awards</a>
+    <a href="#blog">Blog</a>
+    <a href="#interests">Life</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+  <div class="ham" id="hamBtn"><span></span><span></span><span></span></div>
+</nav>
+<div id="mob-menu">
+  <a href="#experience" class="ml">Experience</a>
+  <a href="#techstack" class="ml">Stack</a>
+  <a href="#projects" class="ml">Projects</a>
+  <a href="#achievements" class="ml">Awards</a>
+  <a href="#blog" class="ml">Blog</a>
+  <a href="#interests" class="ml">Life</a>
+  <a href="#contact" class="ml">Contact</a>
+</div>
+
+<!-- HERO -->
 <section id="hero">
   <div class="hero-grid">
     <div>
-      <h1 class="hero-h1">
-        TROUBLE<br>SHOOTING<br>
-        <em>MISSION‑</em><br><em>CRITICAL</em><br>
-        BOTTLENECKS
+      <div class="eyebrow rv"><span>Support Engineer · WiseTech Global</span></div>
+      <h1 class="hero-h1 rv d1">
+        TROUBLE<br>SHOOTING<br><em>MISSION-</em><br><em>CRITICAL</em><br>BOTTLENECKS
       </h1>
+      <p class="hero-desc rv d2">
+        I'm <strong>Venkatesh Thota</strong> — a Support Engineer specialising in planning application support, SQL analytics, automation pipelines and high-severity incident management at enterprise scale.
+      </p>
+      <div class="btns rv d3">
+        <a href="#projects" class="btn-p">View My Work</a>
+        <a href="#contact" class="btn-o">Contact Me</a>
+      </div>
+      <div class="hero-stats rv d4">
+        <div><div class="stat-n">500+</div><div class="stat-l">Incidents Resolved</div></div>
+        <div><div class="stat-n">99%</div><div class="stat-l">SLA Adherence</div></div>
+        <div><div class="stat-n">2+</div><div class="stat-l">Yrs Enterprise Exp.</div></div>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="pcard">
+        <img src="assets/display_Image_in_palceof_VT.jpeg" alt="Venkatesh Thota" class="pphoto">
+        <div style="display:flex;align-items:center">
+          <span class="pdot"></span>
+          <span class="pstatus">Available for opportunities</span>
+        </div>
+        <div class="pname">Venkatesh Thota</div>
+        <div class="prole">Support Engineer · Automation &amp; Data</div>
+        <div class="ppills">
+          <span class="pill">SQL</span>
+          <span class="pill">Python</span>
+          <span class="pill">Linux/Unix</span>
+          <span class="pill">ServiceNow</span>
+          <span class="pill">Zabbix</span>
+          <span class="pill">AutomateNow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <p class="hero-desc">
-        I'm <strong>Venkatesh Thota</strong> — a Support Engineer specialising in planning
-        application support, SQL analytics, automation pipelines and high‑severity
-        incident management.
+<!-- MARQUEE -->
+<div id="techbar">
+  <div class="mtrack">
+    <span class="mitem"><span class="mi">⚡</span>AutomateNow</span>
+    <span class="mitem"><span class="mi">🛡️</span>Salesforce</span>
+    <span class="mitem"><span class="mi">🗄️</span>SQL</span>
+    <span class="mitem"><span class="mi">🐍</span>Python</span>
+    <span class="mitem"><span class="mi">🐧</span>Linux / Unix</span>
+    <span class="mitem"><span class="mi">📋</span>ServiceNow</span>
+    <span class="mitem"><span class="mi">🔭</span>Zabbix</span>
+    <span class="mitem"><span class="mi">✈️</span>IAF</span>
+    <span class="mitem"><span class="mi">☕</span>Java</span>
+    <span class="mitem"><span class="mi">🔧</span>JIRA</span>
+    <span class="mitem"><span class="mi">📊</span>Qlik Analytics</span>
+    <span class="mitem"><span class="mi">🖥️</span>Windows Server</span>
+    <span class="mitem"><span class="mi">⚡</span>AutomateNow</span>
+    <span class="mitem"><span class="mi">🛡️</span>Salesforce</span>
+    <span class="mitem"><span class="mi">🗄️</span>SQL</span>
+    <span class="mitem"><span class="mi">🐍</span>Python</span>
+    <span class="mitem"><span class="mi">🐧</span>Linux / Unix</span>
+    <span class="mitem"><span class="mi">📋</span>ServiceNow</span>
+    <span class="mitem"><span class="mi">🔭</span>Zabbix</span>
+    <span class="mitem"><span class="mi">✈️</span>IAF</span>
+    <span class="mitem"><span class="mi">☕</span>Java</span>
+    <span class="mitem"><span class="mi">🔧</span>JIRA</span>
+    <span class="mitem"><span class="mi">📊</span>Qlik Analytics</span>
+    <span class="mitem"><span class="mi">🖥️</span>Windows Server</span>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:52px">
+    <div class="lbl rv">Career</div>
+    <h2 class="h2 rv d1">Experience &amp;<br><span class="cyan">Growth</span></h2>
+    <p class="sub rv d2">From campus to enterprise — a journey of solving real-world problems at scale.</p>
+  </div>
+  <div class="tl">
+    <div class="tl-line"></div>
+    <div class="tl-row rv">
+      <div class="tl-date">AUG 2025<br>— Present</div>
+      <div class="tl-dot"></div>
+      <div class="tl-box">
+        <div class="tl-co">WiseTech Global</div>
+        <div class="tl-role">Support Engineer — Level 2 Production</div>
+        <ul class="tl-ul">
+          <li>Level 2 production support for planning application software at enterprise scale.</li>
+          <li>Automation, monitoring, SQL troubleshooting and deep debugging of production systems.</li>
+          <li>Proactively identifying recurring incident patterns to reduce overall ticket volume.</li>
+          <li>Collaborating with cross-functional engineering teams to resolve critical production issues.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-row rv d1">
+      <div class="tl-date">AUG 2023<br>— AUG 2025</div>
+      <div class="tl-dot"></div>
+      <div class="tl-box">
+        <div class="tl-co">E2open</div>
+        <div class="tl-role">Associate Support Engineer</div>
+        <ul class="tl-ul">
+          <li>Resolved 500+ critical incidents using Salesforce and ServiceNow with 99% SLA adherence.</li>
+          <li>Leveraged SolidWorks PDM expertise for version control and seamless cross-team collaboration.</li>
+          <li>Managed data files configuring Unix/WinSCP permissions; automated processing pipelines with AutomateNow.</li>
+          <li>Escalated and closed critical production incidents in coordination with cross-functional stakeholders.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-row rv d2">
+      <div class="tl-date">2018 – 2022</div>
+      <div class="tl-dot"></div>
+      <div class="tl-box">
+        <div class="tl-co">Vaagdevi Engineering College</div>
+        <div class="tl-role">B.Tech — Electronics &amp; Communication Engineering</div>
+        <ul class="tl-ul">
+          <li>Final year project: Smart Surveillance Drone with Orbital GPS Tracking.</li>
+          <li>Best Presentation award for AI &amp; Nanotechnology research at college symposium.</li>
+          <li>Best Innovator recognition at the inter-college Agri Hackathon (VIBA).</li>
+          <li>Graduated at Vaagdevi Engineering College, Bollikunta, Warangal.</li>
+        </ul>
+        <img src="assets/vaagdevi.jpg" alt="Vaagdevi Engineering College campus, Warangal" class="edu-img">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- TECH STACK -->
+<div id="techstack" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:48px">
+    <div class="lbl rv">Capabilities</div>
+    <h2 class="h2 rv d1">Tech <span class="cyan">Stack</span></h2>
+    <p class="sub rv d2">Tools and technologies I work with daily across support, automation and data.</p>
+  </div>
+  <div class="tg">
+    <div class="tc rv"><div class="ti">🗄️</div><div class="tn">SQL</div><div class="tcat">Database</div></div>
+    <div class="tc rv d1"><div class="ti">🐍</div><div class="tn">Python</div><div class="tcat">Scripting</div></div>
+    <div class="tc rv d2"><div class="ti">☕</div><div class="tn">Java</div><div class="tcat">Programming</div></div>
+    <div class="tc rv d3"><div class="ti">📜</div><div class="tn">Perl</div><div class="tcat">Scripting</div></div>
+    <div class="tc rv d4"><div class="ti">🐧</div><div class="tn">Linux / Unix</div><div class="tcat">System Admin</div></div>
+    <div class="tc rv d5"><div class="ti">☁️</div><div class="tn">Cloud Basics</div><div class="tcat">Azure / AWS</div></div>
+    <div class="tc rv"><div class="ti">🔭</div><div class="tn">Zabbix</div><div class="tcat">Monitoring</div></div>
+    <div class="tc rv d1"><div class="ti">⚡</div><div class="tn">AutomateNow</div><div class="tcat">Automation</div></div>
+    <div class="tc rv d2"><div class="ti">📋</div><div class="tn">ServiceNow</div><div class="tcat">ITSM</div></div>
+    <div class="tc rv d3"><div class="ti">🛡️</div><div class="tn">Salesforce</div><div class="tcat">CRM</div></div>
+    <div class="tc rv d4"><div class="ti">📊</div><div class="tn">Qlik</div><div class="tcat">Analytics</div></div>
+    <div class="tc rv d5"><div class="ti">🔧</div><div class="tn">JIRA</div><div class="tcat">Project Mgmt</div></div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- PROJECTS -->
+<div id="projects" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:48px">
+    <div class="lbl rv">Featured Work</div>
+    <h2 class="h2 rv d1">Projects &amp;<br><span class="cyan">Builds</span></h2>
+    <p class="sub rv d2">A selection of technical projects — academic and professional.</p>
+  </div>
+  <div class="pg">
+
+    <!-- Change 3 — Drone: video banner + updated title & description -->
+    <div class="pc rv">
+      <div class="pbanner">
+        <video
+          src="assets/major_project.mp4"
+          muted
+          loop
+          playsinline
+          poster="assets/major-project.jpg"
+          class="project-video"
+        ></video>
+      </div>
+      <div class="pbody">
+        <div class="ptags"><span class="tag">GPS</span><span class="tag">Orbital Tracking</span><span class="tag">Embedded</span><span class="tag">IoT</span></div>
+        <div class="ph">SMART SURVEILLANCE DRONE WITH ORBITAL GPS TRACKING</div>
+        <p class="pdesc">Final year B.Tech major project: an autonomous embedded-systems drone engineered with orbital GPS tracking for continuous real-time surveillance. Features IoT-integrated sensor fusion for perimeter monitoring, live telemetry, and adaptive flight-path control — designed to operate in infrastructure-critical and defence-adjacent environments.</p>
+        <div class="pfooter">
+          <div style="font-size:11px;color:var(--muted);font-family:var(--mono)">Academic · Major Project · ECE, VEC</div>
+          <span class="plink">View →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 4a — New project: Automated Application Launcher Using Perl -->
+    <div class="pc rv d1">
+      <div class="pbanner" style="background:linear-gradient(135deg,#061624,#0d2d4a);display:flex;align-items:center;justify-content:center;font-size:64px;">
+        <span style="position:relative;z-index:2;">📜</span>
+      </div>
+      <div class="pbody">
+        <div class="ptags"><span class="tag">Perl</span><span class="tag">Automation</span><span class="tag">Windows</span></div>
+        <div class="ph">Automated Application Launcher Using Perl</div>
+        <p class="pdesc">A Perl script that eliminates manual daily startup overhead by automatically launching all enterprise applications in sequence: Microsoft Teams, Salesforce (Edge), ServiceNow (Chrome), Firefox (Skylight), Outlook, OneNote, PuTTY, and Remote Desktop — using timed delays to prevent resource contention and ensure reliable startup. Dramatically improves enterprise operational efficiency by reducing morning setup time to zero.</p>
+        <div class="pfooter">
+          <div style="font-size:11px;color:var(--muted);font-family:var(--mono)">Professional · Productivity · Scripting</div>
+          <span class="plink">View →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 4b — New project: Automatic Salesforce Dashboard Refresh Using PowerShell -->
+    <div class="pc rv d2">
+      <div class="pbanner" style="background:linear-gradient(135deg,#0a1620,#162d44);display:flex;align-items:center;justify-content:center;font-size:64px;">
+        <span style="position:relative;z-index:2;">⚡</span>
+      </div>
+      <div class="pbody">
+        <div class="ptags"><span class="tag">PowerShell</span><span class="tag">Task Scheduler</span><span class="tag">Salesforce</span></div>
+        <div class="ph">Automatic Salesforce Dashboard Refresh Using PowerShell</div>
+        <p class="pdesc">A PowerShell script integrated with Windows Task Scheduler that automatically opens a browser and refreshes Salesforce production monitoring dashboards at scheduled intervals — with zero manual intervention. Ensures production dashboards remain current at all times, supporting proactive incident detection and real-time operational visibility across the support team.</p>
+        <div class="pfooter">
+          <div style="font-size:11px;color:var(--muted);font-family:var(--mono)">Professional · Monitoring · Automation</div>
+          <span class="plink">View →</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achievements" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:48px">
+    <div class="lbl rv">Recognition</div>
+    <h2 class="h2 rv d1">Awards &amp;<br><span class="cyan">Achievements</span></h2>
+    <p class="sub rv d2">Milestones that mark the journey.</p>
+  </div>
+  <div class="ag">
+    <div class="acard rv">
+      <img src="assets/best-presentation.jpg" alt="Best Presentation Award — AI and Nanotechnology symposium" class="aimg">
+      <div class="abody">
+        <div class="atitle">Outstanding AI &amp; Nanotech Presentation</div>
+        <p class="adesc">Delivered a high-impact technical presentation on AI and Nanotechnology advancements — awarded Best Presentation at a collegiate symposium, ECE Dept, VEC.</p>
+      </div>
+    </div>
+    <div class="acard rv d1">
+      <img src="assets/agri-hackathon.jpg" alt="Best Innovator — Agri Hackathon, Vaagdevi VIBA" class="aimg">
+      <div class="abody">
+        <div class="atitle">Best Innovator — Agri Hackathon</div>
+        <p class="adesc">Recognised as Best Bedding Innovator at the inter-college Agri Hackathon organised by Vaagdevi VIBA in partnership with the Principal Scientific Adviser to the Govt. of India.</p>
+      </div>
+    </div>
+    <div class="acard rv d2">
+      <img src="assets/graduation.jpg" alt="Graduation ceremony — Vaagdevi Engineering College" class="aimg">
+      <div class="abody">
+        <div class="atitle">B.Tech Graduation — VEC</div>
+        <p class="adesc">Graduated with a B.Tech in Electronics &amp; Communication Engineering from Vaagdevi Engineering College, Warangal — with distinction in final year drone project work.</p>
+      </div>
+    </div>
+    <div class="acard rv d3">
+      <img src="assets/short-film.jpg" alt="Best Short Film Contest Winner" class="aimg">
+      <div class="abody">
+        <div class="atitle">Best Short Film Contest Winner</div>
+        <p class="adesc">Won a college-level short film competition, demonstrating creative leadership, script-writing and production skills beyond core technical disciplines.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- CERTIFICATIONS -->
+<div id="certifications" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:48px">
+    <div class="lbl rv">Learning</div>
+    <h2 class="h2 rv d1">Certifi<span class="cyan">cations</span></h2>
+    <p class="sub rv d2">Continuous learning drives continuous improvement.</p>
+  </div>
+  <div class="cg">
+    <div class="certc rv"><div class="cico">🐍</div><div><div class="cn">Basics of Python</div><div class="ci">Coursera · Univ. of Michigan</div></div></div>
+    <div class="certc rv d1"><div class="cico">🗄️</div><div><div class="cn">SQL for Data Analytics</div><div class="ci">Coursera</div></div></div>
+    <div class="certc rv d2"><div class="cico">🤖</div><div><div class="cn">AI &amp; ML Fundamentals</div><div class="ci">IBM</div></div></div>
+    <div class="certc rv d3"><div class="cico">☕</div><div><div class="cn">Java Full Stack Development</div><div class="ci">Pentagon Space</div></div></div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- BLOG -->
+<div id="blog" style="padding:108px 6%">
+  <div class="blog-wrap">
+    <div style="margin-bottom:48px">
+      <div class="lbl rv">Thoughts</div>
+      <h2 class="h2 rv d1">My <span class="cyan">Blog</span></h2>
+      <p class="sub rv d2">
+        Technical articles and science explorations on
+        <a href="https://venky246.blogspot.com" target="_blank" style="color:var(--cyan)">TECHWELCOME</a> — my personal knowledge journal.
       </p>
     </div>
-
-    <div class="pcard">
-      <img src="assets/display_Image_in_palceof_VT.jpeg" alt="Venkatesh Thota profile" class="pphoto" loading="lazy">
-      <div class="pstatus">● Available for opportunities</div>
-      <div class="pname">Venkatesh Thota</div>
-      <div class="prole">Support Engineer · Automation & Data</div>
+    <div class="blog-grid">
+      <a href="https://venky246.blogspot.com/2024/05/brain-computer-interfaces-bcis.html" target="_blank" class="bcard rv" style="color:inherit">
+        <div class="bcard-top">
+          <div class="bdate">MAY 2024 · TECHWELCOME</div>
+          <div class="btitle">Brain-Computer Interfaces (BCIs)</div>
+        </div>
+        <p class="bexcerpt">
+          An in-depth look at how BCIs are enabling seamless mind-to-AI integration — enhancing access to information, revolutionising scientific research, software development, and granting users superhuman cognitive capabilities through real-time brain-AI communication.
+        </p>
+        <div class="bfooter">
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag">AI</span><span class="tag">Neuroscience</span><span class="tag">Future Tech</span></div>
+          <span class="bread">Read →</span>
+        </div>
+      </a>
+      <a href="https://venky246.blogspot.com/2023/02/what-is-digital-rupee-in-india.html" target="_blank" class="bcard rv d1" style="color:inherit">
+        <div class="bcard-top">
+          <div class="bdate">FEB 2023 · TECHWELCOME</div>
+          <div class="btitle">What is the Digital Rupee in India?</div>
+        </div>
+        <p class="bexcerpt">
+          A breakdown of the RBI's first retail e-rupee pilot — how India's Central Bank Digital Currency works, how it differs from cryptocurrency, and what it means for everyday banking across State Bank of India, ICICI, HDFC and Yes Bank.
+        </p>
+        <div class="bfooter">
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag">FinTech</span><span class="tag">CBDC</span><span class="tag">India</span></div>
+          <span class="bread">Read →</span>
+        </div>
+      </a>
+    </div>
+    <div class="blog-cta-row rv">
+      <a href="https://venky246.blogspot.com" target="_blank">View All Posts on TECHWELCOME →</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects">
-  <div class="sec">
-    <div class="lbl">Featured Work</div>
-    <h2 class="h2">Projects & <span class="cyan">Builds</span></h2>
+<div class="divider" style="margin:0 6%"></div>
 
-    <div class="pg">
-
-      <!-- MAJOR PROJECT VIDEO -->
-      <div class="pc">
-        <div class="pbanner">
-          <video src="assets/major_project.mp4"
-                 class="project-video"
-                 muted
-                 loop
-                 playsinline
-                 preload="metadata">
-          </video>
-        </div>
-        <div class="pbody">
-          <div class="ptags">
-            <span class="tag">IoT</span>
-            <span class="tag">Drone</span>
-            <span class="tag">GPS</span>
-            <span class="tag">Embedded</span>
-          </div>
-          <div class="ph">SMART SURVEILLANCE DRONE WITH ORBITAL GPS TRACKING</div>
-          <p class="pdesc">
-            Autonomous surveillance drone designed with orbital GPS tracking for
-            real‑time area monitoring using IoT sensors and embedded controllers.
-          </p>
-          <div class="pfooter">
-            <span>Academic · Major Project</span>
-            <span class="plink">Video</span>
-          </div>
-        </div>
+<!-- INTERESTS -->
+<div id="interests" style="padding:108px 6%">
+  <div class="sec" style="padding:0;margin-bottom:48px">
+    <div class="lbl rv">Beyond the Terminal</div>
+    <h2 class="h2 rv d1">Life &amp;<br><span class="cyan">Interests</span></h2>
+    <p class="sub rv d2">When I'm not debugging production systems, this is what keeps me going.</p>
+  </div>
+  <div class="ig">
+    <div class="icard rv">
+      <img src="assets/travel.jpg" alt="Venkatesh solo travel — train window view on scenic route" class="iimg">
+      <div class="ibody">
+        <div class="inum">01</div>
+        <div class="iicon">✈️</div>
+        <div class="ititle">Solo Travel</div>
+        <p class="idesc">Explored the coastal charm of Vizag and the misty hills of Araku Valley. Solo travel teaches problem-solving in the real world — much like debugging, but far more scenic.</p>
       </div>
-
-      <!-- PERL AUTOMATION -->
-      <div class="pc">
-        <div class="pbanner">
-          <img src="assets/automation.jpg" alt="Perl automation project" loading="lazy">
-        </div>
-        <div class="pbody">
-          <div class="ptags">
-            <span class="tag">Perl</span>
-            <span class="tag">Automation</span>
-            <span class="tag">Windows</span>
-          </div>
-          <div class="ph">Automated Application Launcher (Perl)</div>
-          <p class="pdesc">
-            Perl script to automatically launch Teams, Salesforce, ServiceNow,
-            Chrome, Firefox, Outlook, OneNote, PuTTY and RDP with timed execution.
-          </p>
-          <div class="pfooter">
-            <span>Enterprise Automation</span>
-            <span class="plink">Script</span>
-          </div>
-        </div>
+    </div>
+    <div class="icard rv d1">
+      <img src="assets/background.jpg" alt="Venkatesh at misty mountain sunrise viewpoint" class="iimg">
+      <div class="ibody">
+        <div class="inum">02</div>
+        <div class="iicon">📡</div>
+        <div class="ititle">Tech News &amp; AI Trends</div>
+        <p class="idesc">Avid follower of emerging technologies — especially advances in AI, automation, and cloud computing. Writing about them on TECHWELCOME to crystallise my own understanding.</p>
       </div>
-
-      <!-- POWERSHELL -->
-      <div class="pc">
-        <div class="pbanner">
-          <img src="assets/powershell.jpg" alt="PowerShell automation" loading="lazy">
-        </div>
-        <div class="pbody">
-          <div class="ptags">
-            <span class="tag">PowerShell</span>
-            <span class="tag">Task Scheduler</span>
-            <span class="tag">Salesforce</span>
-          </div>
-          <div class="ph">Automatic Salesforce Refresh</div>
-          <p class="pdesc">
-            PowerShell automation integrated with Windows Task Scheduler to
-            refresh Salesforce dashboards automatically without manual effort.
-          </p>
-          <div class="pfooter">
-            <span>Enterprise Automation</span>
-            <span class="plink">Scheduled</span>
-          </div>
-        </div>
+    </div>
+    <div class="icard rv d2">
+      <div class="iimg-placeholder" style="background:linear-gradient(135deg,#0a1520,#1a3040)">📈</div>
+      <div class="ibody">
+        <div class="inum">03</div>
+        <div class="iicon">📈</div>
+        <div class="ititle">Personal Finance</div>
+        <p class="idesc">Passionate about financial literacy, equity investing and long-term wealth building. Applying the same analytical mindset from data work to personal portfolio management.</p>
       </div>
-
+    </div>
+    <div class="icard rv d3">
+      <div class="iimg-placeholder" style="background:linear-gradient(135deg,#0d1a10,#1a3520)">🤖</div>
+      <div class="ibody">
+        <div class="inum">04</div>
+        <div class="iicon">🤖</div>
+        <div class="ititle">Automation &amp; Tech</div>
+        <p class="idesc">Always tinkering — from automation scripts to exploring new developer tools. I believe the best engineers are the ones who never stop building things for fun.</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ===== REST OF YOUR SECTIONS (AWARDS, BLOG, INTERESTS, CONTACT, FOOTER)
-UNCHANGED FROM YOUR ORIGINAL FILE — SAFE ===== -->
+<div class="divider" style="margin:0 6%"></div>
+
+<!-- CONTACT -->
+<div id="contact" style="padding:108px 6%">
+  <div class="contact-grid">
+    <div>
+      <div class="lbl rv">Get In Touch</div>
+      <div class="big-t rv d1">LET'S<br><em>BUILD</em><br>TOGETHER</div>
+      <p class="sub rv d2">Whether it's a role, a collaboration, or just a technical conversation — I'm always open to connecting with interesting people.</p>
+      <div class="clinks rv d3">
+        <a href="mailto:venkateshthota069@gmail.com" class="clink">
+          <div class="clico">📧</div>
+          <div><div class="cllbl">Email</div><div class="clval">venkateshthota069@gmail.com</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/-venkatesh-thota" target="_blank" class="clink">
+          <div class="clico">💼</div>
+          <div><div class="cllbl">LinkedIn</div><div class="clval">linkedin.com/in/-venkatesh-thota</div></div>
+        </a>
+        <a href="https://venky246.blogspot.com" target="_blank" class="clink">
+          <div class="clico">✍️</div>
+          <div><div class="cllbl">Blog</div><div class="clval">venky246.blogspot.com</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="lbl" style="margin-bottom:22px">Send a Message</div>
+      <div class="cform">
+        <div class="fg"><label class="fl">Your Name</label><input class="fi" type="text" placeholder="Jane Smith"></div>
+        <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" placeholder="jane@company.com"></div>
+        <div class="fg"><label class="fl">Message</label><textarea class="ft" placeholder="Tell me about the opportunity or project..."></textarea></div>
+        <button class="fsub">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-copy">© 2025 <span>Venkatesh Thota</span> — Crafted with precision</div>
+    <div class="fsoc">
+      <a href="mailto:venkateshthota069@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/-venkatesh-thota" target="_blank">LinkedIn</a>
+      <a href="https://venky246.blogspot.com" target="_blank">Blog</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-document.querySelectorAll('.pc').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    card.style.setProperty('--x',`${e.clientX-r.left}px`);
-    card.style.setProperty('--y',`${e.clientY-r.top}px`);
+// Navbar scroll
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>60));
+// Hamburger
+const hb=document.getElementById('hamBtn'),mm=document.getElementById('mob-menu');
+hb.addEventListener('click',()=>{hb.classList.toggle('open');mm.classList.toggle('open')});
+document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>{hb.classList.remove('open');mm.classList.remove('open')}));
+// Reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('#hero .rv').forEach(el=>el.classList.add('on')),120);
+// Active nav
+const secs=document.querySelectorAll('[id]'),nls=document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(scrollY>=s.offsetTop-130)cur=s.id});
+  nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--cyan)':''});
+});
+// Change 8 — Mouse-tracking radial glow on project cards
+document.querySelectorAll('.pc').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--x', `${e.clientX - r.left}px`);
+    card.style.setProperty('--y', `${e.clientY - r.top}px`);
   });
 });
-document.querySelectorAll('.project-video').forEach(video=>{
-  const p=video.closest('.pc');
-  p.addEventListener('mouseenter',()=>video.play());
-  p.addEventListener('mouseleave',()=>{video.pause();video.currentTime=0});
+// Change 8b — Video hover: play on enter, pause + reset on leave
+document.querySelectorAll('.project-video').forEach(video => {
+  const card = video.closest('.pc');
+  card.addEventListener('mouseenter', () => { video.play().catch(()=>{}); });
+  card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
 });
 </script>
-
 </body>
 </html>
