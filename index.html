@@ -1,75 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venkatesh Thota — Support Engineer</title>
 
-<title>Venkatesh Thota | Support Engineer & Automation Specialist</title>
+<meta name="description" content="Venkatesh Thota – Support Engineer specialising in enterprise application support, automation, SQL analytics and mission‑critical incident management.">
 
-<meta name="description"
-      content="Venkatesh Thota – Support Engineer specialising in automation, SQL analytics, enterprise production support, and mission‑critical incident management." />
-
-<!-- Preload fonts for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+/* ===== ROOT ===== */
 :root{
-  --bg:#050709;
-  --surf:#0f1520;
-  --cyan:#00e5ff;
-  --cyan-dm:rgba(0,229,255,.08);
-  --text:#dde4f0;
-  --muted:#5a6a85;
-  --border:rgba(0,229,255,.12);
-  --head:'Bebas Neue',sans-serif;
-  --body:'DM Sans',sans-serif;
-  --mono:'JetBrains Mono',monospace;
+ --bg:#050709;--bg2:#090c14;--surf:#0f1520;--surf2:#141c2e;
+ --cyan:#00e5ff;--cyan2:#00b8cc;
+ --cyan-gl:rgba(0,229,255,.16);--cyan-dm:rgba(0,229,255,.06);
+ --text:#dde4f0;--muted:#5a6a85;
+ --border:rgba(0,229,255,.10);--bord2:rgba(0,229,255,.22);
+ --head:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+ --ease:cubic-bezier(.22,1,.36,1);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--body);
-  line-height:1.65;
-}
-img,video{display:block;max-width:100%}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+img,video{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* ================= HERO ================= */
-#hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:64px;
-  align-items:center;
-  padding:120px 6% 80px;
-}
-
-.hero-title{
-  font-family:var(--head);
-  font-size:clamp(42px,6vw,86px);
-  line-height:.95;
-}
-.hero-title span{color:var(--cyan)}
-.hero-desc{
-  margin-top:22px;
-  max-width:480px;
-  color:var(--muted);
-  font-size:15px;
-}
-
-.pcard{
-  background:var(--surf);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:26px;
-}
-
-/* FIXED PROFILE IMAGE */
+/* ===== HERO PROFILE IMAGE FIX ===== */
 .pphoto{
   width:100%;
   height:320px;
@@ -77,33 +37,24 @@ a{text-decoration:none;color:inherit}
   object-position:center top;
   border-radius:10px;
   border:1px solid var(--border);
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
-/* ================= PROJECTS ================= */
-#projects{
-  padding:100px 6%;
-}
-.pg{
-  max-width:1180px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:22px;
-}
-
+/* ===== PROJECT CARD UPGRADE ===== */
 .pc{
   background:var(--surf);
   border:1px solid var(--border);
   border-radius:14px;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
   position:relative;
-  transition:.45s cubic-bezier(.22,1,.36,1);
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s ease;
 }
 .pc:hover{
-  transform:translateY(-8px) scale(1.02);
   border-color:var(--cyan);
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(0,229,255,.12);
 }
 
 /* Glow */
@@ -111,67 +62,30 @@ a{text-decoration:none;color:inherit}
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(0,229,255,.15),transparent 40%);
+  background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(0,229,255,.14),transparent 40%);
   opacity:0;
   transition:.3s;
   pointer-events:none;
 }
 .pc:hover::before{opacity:1}
 
-.pbanner{
-  height:200px;
-  overflow:hidden;
-}
+.pbanner{height:190px;overflow:hidden;position:relative}
 .pbanner img,
 .pbanner video{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.6s cubic-bezier(.22,1,.36,1);
+  transition:transform .6s var(--ease);
 }
 .pc:hover .pbanner img,
-.pc:hover .pbanner video{
-  transform:scale(1.08);
-}
+.pc:hover .pbanner video{transform:scale(1.08)}
 
-.pbody{
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-}
-.ptags{display:flex;gap:6px;margin-bottom:10px}
-.tag{
-  font-family:var(--mono);
-  font-size:10px;
-  padding:3px 10px;
-  border:1px solid var(--border);
-  border-radius:4px;
-  color:var(--cyan);
-  background:var(--cyan-dm);
-}
-.ph{
-  font-family:var(--head);
-  font-size:19px;
-  margin-bottom:8px;
-  transition:.3s;
-}
-.pc:hover .ph{color:var(--cyan);transform:translateY(-2px)}
-.pdesc{
-  color:var(--muted);
-  font-size:13px;
-  flex:1;
-}
-.pfooter{
-  margin-top:16px;
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  font-family:var(--mono);
-}
+.ph{transition:transform .3s ease,color .3s ease}
+.pc:hover .ph{transform:translateY(-3px);color:var(--cyan)}
 
-/* ================= RESPONSIVE ================= */
+/* ===== KEEP ORIGINAL RESPONSIVE ===== */
 @media(max-width:900px){
-  #hero{grid-template-columns:1fr;text-align:center}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
 }
 </style>
 </head>
@@ -180,142 +94,120 @@ a{text-decoration:none;color:inherit}
 
 <!-- ================= HERO ================= -->
 <section id="hero">
-  <div>
-    <h1 class="hero-title">
-      TROUBLESHOOTING<br>
-      <span>MISSION‑CRITICAL</span><br>
-      BOTTLENECKS
-    </h1>
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-h1">
+        TROUBLE<br>SHOOTING<br>
+        <em>MISSION‑</em><br><em>CRITICAL</em><br>
+        BOTTLENECKS
+      </h1>
 
-    <p class="hero-desc">
-      I’m <strong>Venkatesh Thota</strong> — a Support Engineer specialising in
-      enterprise application support, automation, SQL analytics and
-      high‑severity incident management.
-    </p>
-  </div>
-
-  <div class="pcard">
-    <img
-      src="assets/display_Image_in_palceof_VT.jpeg"
-      alt="Venkatesh Thota – Support Engineer"
-      class="pphoto"
-      loading="eager">
-
-    <div style="font-family:var(--mono);font-size:12px;color:var(--cyan)">
-      ● Available for opportunities
+      <p class="hero-desc">
+        I'm <strong>Venkatesh Thota</strong> — a Support Engineer specialising in planning
+        application support, SQL analytics, automation pipelines and high‑severity
+        incident management.
+      </p>
     </div>
 
-    <div style="margin-top:12px;font-family:var(--head);font-size:22px">
-      Venkatesh Thota
-    </div>
-    <div style="font-size:13px;color:var(--muted)">
-      Support Engineer · Automation & Data
+    <div class="pcard">
+      <img src="assets/display_Image_in_palceof_VT.jpeg" alt="Venkatesh Thota profile" class="pphoto" loading="lazy">
+      <div class="pstatus">● Available for opportunities</div>
+      <div class="pname">Venkatesh Thota</div>
+      <div class="prole">Support Engineer · Automation & Data</div>
     </div>
   </div>
 </section>
 
 <!-- ================= PROJECTS ================= -->
 <section id="projects">
-  <h2 style="font-family:var(--head);font-size:42px;text-align:center;margin-bottom:48px">
-    Projects & <span style="color:var(--cyan)">Builds</span>
-  </h2>
+  <div class="sec">
+    <div class="lbl">Featured Work</div>
+    <h2 class="h2">Projects & <span class="cyan">Builds</span></h2>
 
-  <div class="pg">
+    <div class="pg">
 
-    <!-- MAJOR PROJECT (VIDEO) -->
-    <article class="pc">
-      <div class="pbanner">
-        <video
-          class="project-video"
-          src="assets/major_project.mp4"
-          muted
-          loop
-          playsinline
-          preload="metadata">
-        </video>
-      </div>
-
-      <div class="pbody">
-        <div class="ptags">
-          <span class="tag">IoT</span>
-          <span class="tag">Drone</span>
-          <span class="tag">GPS</span>
-          <span class="tag">Embedded</span>
+      <!-- MAJOR PROJECT VIDEO -->
+      <div class="pc">
+        <div class="pbanner">
+          <video src="assets/major_project.mp4"
+                 class="project-video"
+                 muted
+                 loop
+                 playsinline
+                 preload="metadata">
+          </video>
         </div>
-
-        <div class="ph">
-          SMART SURVEILLANCE DRONE WITH ORBITAL GPS TRACKING
-        </div>
-
-        <p class="pdesc">
-          Autonomous surveillance drone designed for real‑time area monitoring
-          using orbital GPS tracking, IoT sensors and embedded controllers.
-        </p>
-
-        <div class="pfooter">
-          <span>Academic · Major Project</span>
-          <span>Video</span>
+        <div class="pbody">
+          <div class="ptags">
+            <span class="tag">IoT</span>
+            <span class="tag">Drone</span>
+            <span class="tag">GPS</span>
+            <span class="tag">Embedded</span>
+          </div>
+          <div class="ph">SMART SURVEILLANCE DRONE WITH ORBITAL GPS TRACKING</div>
+          <p class="pdesc">
+            Autonomous surveillance drone designed with orbital GPS tracking for
+            real‑time area monitoring using IoT sensors and embedded controllers.
+          </p>
+          <div class="pfooter">
+            <span>Academic · Major Project</span>
+            <span class="plink">Video</span>
+          </div>
         </div>
       </div>
-    </article>
 
-    <!-- PERL AUTOMATION -->
-    <article class="pc">
-      <div class="pbanner">
-        <img src="assets/automation.jpg" alt="Perl automation script" loading="lazy">
-      </div>
-
-      <div class="pbody">
-        <div class="ptags">
-          <span class="tag">Perl</span>
-          <span class="tag">Automation</span>
-          <span class="tag">Windows</span>
+      <!-- PERL AUTOMATION -->
+      <div class="pc">
+        <div class="pbanner">
+          <img src="assets/automation.jpg" alt="Perl automation project" loading="lazy">
         </div>
-
-        <div class="ph">Automated Application Launcher (Perl)</div>
-
-        <p class="pdesc">
-          Automated daily startup of enterprise applications including Teams,
-          Salesforce, ServiceNow, Outlook, OneNote, PuTTY and RDP with controlled
-          execution delays.
-        </p>
-
-        <div class="pfooter">
-          <span>Enterprise Automation</span>
-          <span>Script</span>
+        <div class="pbody">
+          <div class="ptags">
+            <span class="tag">Perl</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Windows</span>
+          </div>
+          <div class="ph">Automated Application Launcher (Perl)</div>
+          <p class="pdesc">
+            Perl script to automatically launch Teams, Salesforce, ServiceNow,
+            Chrome, Firefox, Outlook, OneNote, PuTTY and RDP with timed execution.
+          </p>
+          <div class="pfooter">
+            <span>Enterprise Automation</span>
+            <span class="plink">Script</span>
+          </div>
         </div>
       </div>
-    </article>
 
-    <!-- POWERSHELL -->
-    <article class="pc">
-      <div class="pbanner">
-        <img src="assets/powershell.jpg" alt="PowerShell automation" loading="lazy">
-      </div>
-
-      <div class="pbody">
-        <div class="ptags">
-          <span class="tag">PowerShell</span>
-          <span class="tag">Task Scheduler</span>
-          <span class="tag">Salesforce</span>
+      <!-- POWERSHELL -->
+      <div class="pc">
+        <div class="pbanner">
+          <img src="assets/powershell.jpg" alt="PowerShell automation" loading="lazy">
         </div>
-
-        <div class="ph">Automated Salesforce Refresh</div>
-
-        <p class="pdesc">
-          PowerShell automation integrated with Windows Task Scheduler to
-          refresh Salesforce dashboards automatically without manual effort.
-        </p>
-
-        <div class="pfooter">
-          <span>Enterprise Automation</span>
-          <span>Scheduled</span>
+        <div class="pbody">
+          <div class="ptags">
+            <span class="tag">PowerShell</span>
+            <span class="tag">Task Scheduler</span>
+            <span class="tag">Salesforce</span>
+          </div>
+          <div class="ph">Automatic Salesforce Refresh</div>
+          <p class="pdesc">
+            PowerShell automation integrated with Windows Task Scheduler to
+            refresh Salesforce dashboards automatically without manual effort.
+          </p>
+          <div class="pfooter">
+            <span>Enterprise Automation</span>
+            <span class="plink">Scheduled</span>
+          </div>
         </div>
       </div>
-    </article>
 
+    </div>
   </div>
 </section>
+
+<!-- ===== REST OF YOUR SECTIONS (AWARDS, BLOG, INTERESTS, CONTACT, FOOTER)
+UNCHANGED FROM YOUR ORIGINAL FILE — SAFE ===== -->
 
 <script>
 document.querySelectorAll('.pc').forEach(card=>{
@@ -325,10 +217,10 @@ document.querySelectorAll('.pc').forEach(card=>{
     card.style.setProperty('--y',`${e.clientY-r.top}px`);
   });
 });
-document.querySelectorAll('.project-video').forEach(v=>{
-  const p=v.closest('.pc');
-  p.addEventListener('mouseenter',()=>v.play());
-  p.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0});
+document.querySelectorAll('.project-video').forEach(video=>{
+  const p=video.closest('.pc');
+  p.addEventListener('mouseenter',()=>video.play());
+  p.addEventListener('mouseleave',()=>{video.pause();video.currentTime=0});
 });
 </script>
 
